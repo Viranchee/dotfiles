@@ -13,6 +13,15 @@ Setup Brew
 - Brewfile
 - SSH Config file
 
+### Manual Setup:
+
+- https://vimacapp.com/
+- Cloudflare Warp, Charles, Postman
+- Dash docs
+- Horo
+- Bumpr
+- iTerm
+
 ### How to setup:
 
 Run `./setup.sh`
