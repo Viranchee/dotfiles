@@ -33,3 +33,4 @@ Run `./setup.sh`
 - Add scripts to remove custom files from the computer
 - Add support for `Keepass` files, `Rclone` files without commiting them to the repo
 - Customize `.zshrc`
+- Use [MacHack](https://github.com/kendfinger/MacHack) setup flags
