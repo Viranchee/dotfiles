@@ -34,3 +34,4 @@ Run `./setup.sh`
 - Add support for `Keepass` files, `Rclone` files without commiting them to the repo
 - Customize `.zshrc`
 - Use [MacHack](https://github.com/kendfinger/MacHack) setup flags
+- ZSH [Quick setup](https://github.com/jotyGill/ezsh)
