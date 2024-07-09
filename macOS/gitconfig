@@ -1,6 +1,10 @@
 [user]
+	email = hey@viranchee.com
 	name = Viranchee Lotia
-	email = viranchee@outlook.com
+[branch "main"]
+	remote = origin
+[push]
+	autoSetupRemote = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

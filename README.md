@@ -1,37 +1,34 @@
 ### Prerequisite:
 
-Xcode tools
+``` bash
+brew install rcm
+```
+Setup: In `$HOME` folder, add a `.rcrc` file which has a variable of where this DotFiles repository is. eg. For me, it's currently
 
-`xcode-select install`
+``` bash
+cat ~/.rcrc
+> DOTFILES_DIRS="$HOME/dotfiles/macOS"
+```
 
-Setup Brew
+Tools:
 
-### Included:
+- `lsrc`: List files managed by RCM
+- `mkrc <dotfile>` : Add a file to the repo by copying and symlinking behind the scenes
+- TODO: How to setup a new computer.
 
-- Git Config
-- ZSHRC terminal file
-- Brewfile
-- SSH Config file
 
-### Manual Setup:
+### Dotfiles added
+- `Fish` Shell
+- `mpv`: TODO: manually download UOSC
+- `yt-dlp`: Config file
+- `gitconfig`: Probably didn't need it but a good consistency
+- `rclone config`: Encrypted rclone config file. The complicated key is saved to my Password management software
 
-- https://vimacapp.com/
-- Cloudflare Warp, Charles, Postman
-- Dash docs
-- Horo
-- Bumpr
-- iTerm
+### Future Dotfiles
+- Automate Macos settings setup?
+- Emacs (Org-mode) config. TODO: Switch to emacs
+- VSCode config. Stop relying on VSCode native sync?
+- Other configurations. Python Environments?
 
-### How to setup:
-
-Run `./setup.sh`
-
-### TODO:
-
-- VSCode config
-- System default configuration
-- Add scripts to remove custom files from the computer
-- Add support for `Keepass` files, `Rclone` files without commiting them to the repo
-- Customize `.zshrc`
+### Interesting Repo:
 - Use [MacHack](https://github.com/kendfinger/MacHack) setup flags
-- ZSH [Quick setup](https://github.com/jotyGill/ezsh)

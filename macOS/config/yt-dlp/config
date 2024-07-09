@@ -1,0 +1,85 @@
+### Every line is a separate command, to turn off/on setting you put # at start of the line "#=OFF" "without #=ON" , I use ###/## to make it easier what are explanations and what are commands
+
+### 1. Link - when you scroll down you will have readme with every command - more detailed explanation of commands/setting
+### https://github.com/yt-dlp/yt-dlp
+### 2. Newest bug/updates - [IMPORTANT] KNOWN ISSUES/FAQ
+### https://github.com/yt-dlp/yt-dlp/issues/3766
+### 3. General FAQ
+### https://github.com/yt-dlp/yt-dlp/wiki/FAQ
+
+
+### In most cases you need to use FFMPEG software, to merge/combine video+audio together after downloading or for merge subtitles/thumbnail/chapters/other you need FFMPEG
+### Best is to use the special version of "FFMPEG for yt-dlp" software with link below, download the newest date/highest build which starts "Auto-Build" for Windows pick to download assest ending with "win64-gpl.zip" or with "win32-gpl.zip", and update it from time to time  
+### https://github.com/yt-dlp/FFmpeg-Builds/releases
+
+
+
+### "--merge-output-format" this will try to save it MKV Container, if you want to make it more compatible with old devices(phones without good video player) change it to "--merge-output-format mp4", but MP4 is less compatible with subtitles/thumbnail/chapters ;; "--remux-video mkv" will make every video no matter what in choosen container 
+# --merge-output-format mkv
+
+### "no-overwrites" and the other one should check if the file already exist and not redownload everything, but ffmpeg doesn't do that, that's why you there is "--download-archive archive.txt" so after every finished download it will write a list to check if you did already downloaded that file 
+--no-overwrites
+--no-post-overwrites
+# --download-archive archive.txt
+
+
+### 2.MIDDLE - first part of the command: "res:720" makes it download only from lowest to 720p available video(so if you want MAX 480p, then change it to res:480, etc), then I did choose h264 and m4a(AAC) as examples for "higher" compatibility - if you want to change it more read: https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#sorting-formats
+### 3.BEST - This will prioritize in the order: Resolution, FPS, and then Codec;; so if the Video have 2160p VP9 and 1080p AV1 version , it will download the 2160p VP9, if you don't want to download AV1 just put # to turn off this command
+
+--format-sort res:1080,fps,vcodec:h265,acodec:m4a
+# --format "[filesize<1G]"
+# 3.BEST
+# --format-sort res,fps,codec:av1
+
+
+### "--write-auto-subs" does allow to download auto generated subtitles on youtube/other, if you turn on both "--write-sub" + "--embed-subs" it will keep subtitles outside(external subtitles) of the video file and embed/merge into the video file(internal subtitles)  
+### "--convert-subtitles=ass" is there if you want to use MP4 container, and want have functioning subtitles (Youtube now use webVTT, which of course old video players can't play/read) ;; "--compat-option no-keep-subs" this will make keep external subtitles no matter what setting before
+
+#--write-sub
+--write-auto-subs
+--embed-subs
+# --write-m3u8
+--sub-lang en,en-US,en-CA,en-GB,en-IE,enUS,
+
+#--compat-option no-keep-subs
+#--convert-subtitles=ass
+
+### "--write-thumbnail" + "embed-thumbnail" when both ON , it will keep the picture and embed/merge into the file
+### metadata are needed for example chapter names and other stuff
+
+#--write-thumbnail
+--embed-thumbnail
+--add-metadata
+--embed-metadata
+--embed-chapters
+
+### This will make that it doesn't use the  no no character for Windows OS file names like : "？：" instead "?:" they look the same but are different unicode charset ;; "--restrict-filenames" Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+# --windows-filenames
+--restrict-filenames
+
+### "--output" is command for where the files will be downloaded(location), and what name they will have, read more about it on https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#output-template ;; if you want to change where it download and you don't know how paths work in PC, search it on internet there are plenty of guides already, search something like "absolute path relative path windows"
+### I made 3 options: 1. date order + Long detailed name , 2. Date order + Name , 3. just name
+### All have the same directory structure   Website/Channel name as you see it on website(uploader)___Channel name in URL(uploader_id)/Files
+### simple explanations: every "/" is new directory/folder ,, "%(extractor)s" is the website used (Youtube,Twitch,TikTok) ,, with "thumbnail:" you can specify different location/name, apply for this things "subtitle:, thumbnail:, description:, infojson:, link:, pl_thumbnail:, pl_description:, pl_infojson:, chapter:, pl_video:"
+### "thumbnail:" does make one up directory/folder with name "uploader_id___channel_id" , if "--write-thumbnail" + "--embed-thumbnail" used
+
+
+
+## 2. File name with " Video name - Video ID "
+# If playlist
+--output "/Volumes/code/videos/Automatically Add To TV.localized/%(playlist_index)s.%(title)+s.%(ext)s"
+# --output "/Volumes/code/videos/%(uploader)s-%(title)+s.%(ext)s"
+# --output "thumbnail:%(extractor)s/%(uploader)+.100s%(uploader_id&___|)s%(uploader_id|)s/%(uploader_id|)s%(channel_id&___|)s%(channel_id|)s/%(upload_date>%Y-%m-%d|)s%(timestamp&--|)s%(timestamp>%H-%M-%S|)s%(upload_date& - |)s%(title)+.100s.%(ext)s"
+
+
+### For testing, "--skip-download" is for skipping video/audio download
+### Example: want to download all thumbnails/subtitles/metadata/json, but don't want to redownload video, so you turn ON "--skip-download" and turn on the other stuff you want 
+# --skip-download 
+#--write-all-thumbnails
+#--write-info-json
+# --abort-on-error
+
+
+--sponsorblock-remove all 
+--fragment-retries 10
+--sub-lang="en,en-orig,en-us,en-uk"
