@@ -1,5 +1,5 @@
 # `ls` → `ls -laG` abbreviation
-abbr -a -g ls ls -laG
+abbr -a -g ls ls -lG
 
 function gce -d "Git commit with optional message and push"
     set message (string join " " $argv)
@@ -42,13 +42,8 @@ else
 end
 
 
-export MPICC=/opt/homebrew/Cellar/open-mpi/5.0.3_1/bin/mpicc
-export MPIRUN=/opt/homebrew/Cellar/open-mpi/5.0.3_1/bin/mpirun
-
 set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
-set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/libomp/lib"
 set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/zlib/lib"
 
 set -gx CPPFLAGS "-L/opt/homebrew/opt/llvm/include"
-set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/libomp/include"
 set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/zlib/include"
