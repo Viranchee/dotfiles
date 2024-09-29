@@ -1,0 +1,1 @@
+../../macOS/config/fish/config.fish
