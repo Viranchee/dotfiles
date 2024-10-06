@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # `ls` → `ls -laG` abbreviation
-abbr -a -g ls ls -lG
+abbr -a -g ls ls -lAGuw
 
 function gce -d "Git commit with optional message and push"
     set message (string join " " $argv)
@@ -24,7 +24,7 @@ set fish_greeting ""
 # Set PATH, MANPATH, etc., for Homebrew.
 # Check if this is MacOS
 
-if test (uname) = "Darwin"
+if test (uname) = Darwin
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     # >>> conda initialize >>>
@@ -40,12 +40,12 @@ if test (uname) = "Darwin"
     end
 
 
-    set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+    set -gx LDFLAGS -L/opt/homebrew/opt/llvm/lib
     set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/zlib/lib"
 
-    set -gx CPPFLAGS "-L/opt/homebrew/opt/llvm/include"
+    set -gx CPPFLAGS -L/opt/homebrew/opt/llvm/include
     set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/zlib/include"
-else if test (uname) = "Linux"
+else if test (uname) = Linux
     # fish_add_path /usr/local/cuda-12.6/bin
     # sudo apt-get install -y nvidia-open
     echo "This is Linux"
