@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# `ls` → `ls -laG` abbreviation
+# `ls` → `ls -lAGuw` abbreviation
 abbr -a -g ls ls -lAGuw
 
 function gce -d "Git commit with optional message and push"
