@@ -45,6 +45,7 @@ if test (uname) = Darwin
 
     set -gx CPPFLAGS -L/opt/homebrew/opt/llvm/include
     set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/zlib/include"
+    fish_add_path /Users/virancheel/.modular/bin
 else if test (uname) = Linux
     # fish_add_path /usr/local/cuda-12.6/bin
     # sudo apt-get install -y nvidia-open
