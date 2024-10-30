@@ -41,9 +41,9 @@ if test (uname) = Darwin
 
 
     set -gx LDFLAGS -L/opt/homebrew/opt/llvm/lib
-    # set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/zlib/lib"
-
     set -gx CPPFLAGS -L/opt/homebrew/opt/llvm/include
+
+    # set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/zlib/lib"
     # set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/zlib/include"
     fish_add_path /Users/virancheel/.modular/bin
 else if test (uname) = Linux
