@@ -2,6 +2,8 @@
 
 ``` bash
 brew install rcm
+ fish shell:
+echo DOTFILES_DIRS=\"(pwd)\" > ~/.rcrc 
 ```
 Setup: In `$HOME` folder, add a `.rcrc` file which has a variable of where this DotFiles repository is. eg. For me, it's currently
 
@@ -14,6 +16,8 @@ Tools:
 
 - `lsrc`: List files managed by RCM
 - `mkrc <dotfile>` : Add a file to the repo by copying and symlinking behind the scenes
+- `rcup` 
+- `rcdn`
 - TODO: How to setup a new computer.
 
 
