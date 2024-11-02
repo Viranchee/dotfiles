@@ -25,7 +25,16 @@ set fish_greeting ""
 # Check if this is MacOS
 
 if test (uname) = Darwin
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    # Check where Brew is installed on the system.
+    # Some systems it is /opt/homebrew, some it is ~/homebrew
+    # set local variable BREW_HOME to the correct path
+    set BREW_HOME /opt/homebrew
+    if test -O ~/homebrew/bin/brew
+        set BREW_HOME $(dirname ~/homebrew/bin/brew)
+    end
+
+    eval "$($BREW_HOME/brew shellenv)"
+
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
@@ -39,13 +48,20 @@ if test (uname) = Darwin
         end
     end
 
+    ## LLVM Flags
+    set -gx LDFLAGS -L$BREW_HOME/opt/llvm/lib
+    set -gx CPPFLAGS -L$BREW_HOME/opt/llvm/include
 
-    set -gx LDFLAGS -L/opt/homebrew/opt/llvm/lib
-    set -gx CPPFLAGS -L/opt/homebrew/opt/llvm/include
+    ## To use the bundled libunwind please use the following LDFLAGS:
+    # LDFLAGS="-L$BREW_HOME/opt/llvm/lib/unwind -lunwind"
+    #     To use the bundled libc++ please use the following LDFLAGS:
+    #   LDFLAGS="-L$BREW_HOME/opt/llvm/lib/c++ -L$BREW_HOME/opt/llvm/lib/unwind -lunwind"
+
+    # fish_add_path 
 
     # set -gx LDFLAGS "$LDFLAGS -L/opt/homebrew/opt/zlib/lib"
     # set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/zlib/include"
-    fish_add_path /Users/virancheel/.modular/bin
+    # fish_add_path /Users/virancheel/.modular/bin
 else if test (uname) = Linux
     # fish_add_path /usr/local/cuda-12.6/bin
     # sudo apt-get install -y nvidia-open
