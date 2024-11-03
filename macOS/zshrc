@@ -1,0 +1,2 @@
+HOMEBREW_PATH=/Users/$(whoami)/homebrew
+export PATH=$HOMEBREW_PATH/bin:$PATH
