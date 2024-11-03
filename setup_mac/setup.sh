@@ -6,5 +6,7 @@ curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip-compone
 BREW_PATH=$(pwd)/homebrew/bin
 export PATH="$BREW_PATH:$PATH"
 # Install Fish
-brew install fish
+brew install fish rcm rclone gdu
+echo DOTFILES_DIRS=\"(pwd)\" > ~/.rcrc
+rcup
 fish
